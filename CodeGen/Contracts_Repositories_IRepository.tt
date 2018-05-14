@@ -1,0 +1,44 @@
+﻿
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#+
+// <copyright>
+// </copyright>
+
+public class Contracts_Repositories_IRepository : BaseTemplate
+{
+	public override string TransformText()
+	{
+#>
+using System;
+using System.Data.Entity.Core.Objects;
+using Contracts.Entities.Data;
+
+// CAUTION - AUTOMATICALLY GENERATED
+// These classes have been automatically generated from the core database. Use partial classes to create custom properties
+// Code Generation Template developed by Ben Liebert, <#+ Write(System.DateTime.Now.ToString("d MMM yyyy")); #> 
+namespace Contracts.Repositories {
+
+	 /// <summary>
+    /// Abstracts the data-storage mode away from the caller
+    /// </summary>
+    public partial interface IRepository
+    {
+    
+<#+
+    foreach(Table table in base.Tables)
+    {
+#>
+		Entities.Data.<#+ Write(table.Name); #> GetOrCreate<#+ Write(table.Name); #>(int? <#+ Write(table.Name); #>ID);
+        IObjectSet<Entities.Data.<#+ Write(table.Name); #>> <#+ Write(table.Name); #> { get; }
+<#+
+	}	// End ForEach
+#>
+	}
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

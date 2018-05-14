@@ -1,0 +1,60 @@
+﻿
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#+
+// <copyright>
+// </copyright>
+
+public class Contracts_Entities_Lists : BaseTemplate
+{
+	public override string TransformText()
+	{
+#>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+// CAUTION - AUTOMATICALLY GENERATED
+// These classes have been automatically generated from the core database. Use partial classes to create custom properties
+// Code Generation Template developed by Ben Liebert, <#+ Write(System.DateTime.Now.ToString("d MMM yyyy")); #> 
+namespace Contracts.Entities.Lists {
+
+<#+
+    foreach(Table table in base.Tables)
+    {
+#>
+	/// <summary>
+	/// A cachable list of <#+ Write(table.Name); #> objects
+	/// </summary>
+	public partial class <#+ Write(table.Name); #>List : System.Collections.Generic.List<Contracts.Entities.Data.<#+ Write(table.Name); #>>, Contracts.Cache.ICachable
+	{
+		public string CacheKey{ get; set; }
+
+		private List<string> _Tags = new List<string>();
+		public List<string> Tags
+		{
+			get { return _Tags; }
+			set { _Tags = value; }
+		}
+	}
+		
+<#+
+	}
+
+#>
+
+}
+
+
+
+
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

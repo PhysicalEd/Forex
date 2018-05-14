@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Soon soon soon</title>
+    <!--<script src="../Scripts/ThirdParty/vue.js"></script>
+    <script src="../Scripts/ThirdParty/vue.js"></script>-->
+    <script src="../Scripts/ThirdParty/vue.js"></script>
+
+    <script src="BaseController.js"></script>
+    <script src="Main.js">
+        
+    </script>
+	<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <!--<span v-html="message"></span>-->
+    
+    <input type="button" v-on:click="Test()" value="Test"/>
+    <span v-html="Meow"></span>
+    <select v-model="SelectedStrategy" v-on:change="Change">
+        <option value="0">Please select strategy</option>
+        <option v-for="x in Model.StrategyTypes" v-bind:value="x.Value" v-html="x.Name"></option>
+    </select>
+    
+</div>
+
+</body>
+</html>

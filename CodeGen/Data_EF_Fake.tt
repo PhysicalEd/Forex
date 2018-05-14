@@ -1,0 +1,75 @@
+﻿
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#+
+// <copyright>
+// </copyright>
+
+public class Data_EF_Fake : BaseTemplate
+{
+	public override string TransformText()
+	{
+#>
+using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Linq;
+using Contracts.Entities.Data;
+
+// CAUTION - AUTOMATICALLY GENERATED
+// These classes have been automatically generated from the core database. Use partial classes to create custom properties
+// Code Generation Template developed by Ben Liebert, <#+ Write(System.DateTime.Now.ToString("d MMM yyyy")); #> 
+namespace Data.EF.Fake {
+
+	/// <summary>
+    /// Creates lists of the various data-bound entities, which can later be injected into test routines etc - bypassing any database dependencies
+    /// </summary>
+    public partial class FakeData
+    {
+
+		private void CreateIdentityvalues()
+		{
+<#+
+    foreach(Table table in base.Tables)
+    {
+#>
+			this.<#+ Write(table.Name); #>.Where(x => x.<#+ Write(table.Name); #>ID == 0).ToList().ForEach(x => x.<#+ Write(table.Name); #>ID = this.<#+ Write(table.Name); #>.Max(y => y.<#+ Write(table.Name); #>ID) + 1);
+<#+
+	}	// End ForEach
+#>
+		}
+    
+<#+
+    foreach(Table table in base.Tables)
+    {
+#>
+		public <#+ Write(table.Name); #> GetOrCreate<#+ Write(table.Name); #>(int? <#+ Write(table.Name); #>ID) {
+            <#+ Write(table.Name); #> item = this.<#+ Write(table.Name); #>.FirstOrDefault(x => x.<#+ Write(table.Name); #>ID == <#+ Write(table.Name); #>ID);
+			if (item == null){
+				item = new <#+ Write(table.Name); #>();
+				this.<#+ Write(table.Name); #>.AddObject(item);
+			}
+			return item;
+        }
+
+		private IObjectSet<<#+ Write(table.Name); #>> _<#+ Write(table.Name); #> = null;
+        public IObjectSet<<#+ Write(table.Name); #>> <#+ Write(table.Name); #> {
+            get {
+                if (_<#+ Write(table.Name); #> == null) {
+                    var result = new List<<#+ Write(table.Name); #>>();
+                    _<#+ Write(table.Name); #> = new FakeObjectSet<<#+ Write(table.Name); #>>(result);
+                }
+                return _<#+ Write(table.Name); #>;
+            }
+        }
+	
+<#+
+	}	// End ForEach
+#>
+	}
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

@@ -1,7 +1,0 @@
-﻿/*
-home.css
-Contains styles that are exlusively used by views in our 'home' folder
-*/
-.home{ background-color: #fafafa;color: #333;width: 600px;margin-left: auto;margin-right: auto;margin-top: 100px;padding: 20px;}
-
-.home table tr{ cursor: pointer;}

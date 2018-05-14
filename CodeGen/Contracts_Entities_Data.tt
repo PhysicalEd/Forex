@@ -1,0 +1,63 @@
+﻿
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#+
+// <copyright>
+// </copyright>
+
+public class Contracts_Entities_Data : BaseTemplate
+{
+	public override string TransformText()
+	{
+#>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+// CAUTION - AUTOMATICALLY GENERATED
+// These classes have been automatically generated from the core database. Use partial classes to create custom properties
+// Code Generation Template developed by Ben Liebert, <#+ Write(System.DateTime.Now.ToString("d MMM yyyy")); #> 
+namespace Contracts.Entities.Data {
+
+<#+
+    foreach(Table table in base.Tables)
+    {
+#>
+	/// <summary>
+	/// Interface of our generic <#+ Write(table.Name); #> object
+	/// </summary>
+	public partial class <#+ WriteLine(table.Name); #>
+	{
+<#+
+		
+		PushIndent("\t\t");
+		foreach (Column column in table.Columns)
+		{
+			var colType = base.GetDotNetTypeFromDBType(column);
+			WriteLine("public " + colType + " " + column.Name + " { get; set; }");
+		}
+		PopIndent();
+#>
+		public bool IsNew { get { return (this.<#+ Write(table.Name); #>ID == 0); } }
+	}
+		
+<#+
+	}
+
+#>
+
+}
+
+
+
+
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>
