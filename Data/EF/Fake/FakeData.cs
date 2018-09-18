@@ -36,5 +36,10 @@ namespace Data.EF.Fake {
         {
             return null;
         }
+
+        public void ExecuteStoreCommand(string commandText, object[] parameters)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

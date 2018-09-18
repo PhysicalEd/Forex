@@ -111,11 +111,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{EF40DFF9-106A-40AC-A802-EFD550F2C51B}</Project>
-      <Name>NFTB.Contracts</Name>
+      <Name>Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dependency\Dependency.csproj">
       <Project>{EC5802EC-4E6E-48A7-A2DC-827589EACE2A}</Project>
-      <Name>NFTB.Dependency</Name>
+      <Name>Dependency</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

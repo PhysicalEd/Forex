@@ -182,11 +182,6 @@
     <Compile Include="Models\StrategyTesterModel.cs" />
     <Compile Include="Models\StrategyTesterModelFilter.cs" />
     <Compile Include="Models\BreakoutStrategyModel.cs" />
-    <Compile Include="Models\RegistrationSummary.cs" />
-    <Compile Include="Models\TermDetailModelResult.cs" />
-    <Compile Include="Models\AttendanceEditorModelResult.cs" />
-    <Compile Include="Models\AttendanceListModel.cs" />
-    <Compile Include="Models\PlayerListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\OAuthAppProvider.cs" />
     <Compile Include="Security\OwinContextExtensions.cs" />

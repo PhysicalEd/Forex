@@ -14,7 +14,7 @@ namespace API.Models
 
         public DateTime TradeTime { get; set; }
 
-        public List<BreakoutTradeSessionSummary> TradeSessions { get; set; } = new List<BreakoutTradeSessionSummary>();
+        //public List<BreakoutTradeSessionSummary> TradeSessions { get; set; } = new List<BreakoutTradeSessionSummary>();
 
         //public List<>
 

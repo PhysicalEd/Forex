@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettingsRetriever.cs" />
+    <Compile Include="DataManagers\BreakoutStrategy.cs" />
     <Compile Include="DataManagers\StrategyManager.cs" />
     <Compile Include="EntityFrameworkInitializer.cs" />
     <Compile Include="NoLogger.cs" />
@@ -120,19 +121,19 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{D7964474-EDA0-45E4-9172-3A04616E5688}</Project>
-      <Name>NFTB.Common</Name>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{EF40DFF9-106A-40AC-A802-EFD550F2C51B}</Project>
-      <Name>NFTB.Contracts</Name>
+      <Name>Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{0ACF2B82-1262-4425-A25C-553EBFE49A06}</Project>
-      <Name>NFTB.Data</Name>
+      <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dependency\Dependency.csproj">
       <Project>{EC5802EC-4E6E-48A7-A2DC-827589EACE2A}</Project>
-      <Name>NFTB.Dependency</Name>
+      <Name>Dependency</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

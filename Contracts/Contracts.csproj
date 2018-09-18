@@ -88,25 +88,20 @@
     <Compile Include="Cache\IPersistentStorage.cs" />
     <Compile Include="DataManagers\CodeGen.cs" />
     <Compile Include="DataManagers\IStrategyManager.cs" />
-    <Compile Include="DataManagers\IAccountManager.cs" />
-    <Compile Include="Entities\Data\BreakoutTradeSessionSummary.cs" />
-    <Compile Include="Entities\Data\PlayerAttendanceSummary.cs" />
+    <Compile Include="Entities\Data\ReferenceValuesSummary.cs" />
+    <Compile Include="Entities\Data\SellOrderSummary.cs" />
+    <Compile Include="Entities\Data\BuyOrderSummary.cs" />
+    <Compile Include="Entities\Data\OrderSummary.cs" />
+    <Compile Include="Entities\Data\TradingParameters.cs" />
     <Compile Include="Entities\Data\CodeGen.cs" />
-    <Compile Include="Entities\Data\AttendanceSummary.cs" />
-    <Compile Include="Entities\Data\LoginSummary.cs" />
-    <Compile Include="Entities\Data\RegistrationSummary.cs" />
-    <Compile Include="Entities\Data\TermPlayerSummary.cs" />
-    <Compile Include="Entities\Data\InvoiceSummary.cs" />
-    <Compile Include="Entities\Data\TermSummary.cs" />
-    <Compile Include="Entities\Data\PlayerSummary.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Entities\Data\CandleSummary.cs" />
-    <Compile Include="Entities\Data\TickDataSummary.cs" />
     <Compile Include="Entities\EnumSummary.cs" />
     <Compile Include="Entities\HTMLContent.cs" />
     <Compile Include="Entities\Lists\CodeGen.cs" />
     <Compile Include="Entities\SimpleCachableValue.cs" />
+    <Compile Include="Enums\PriceComparisonTypes.cs" />
+    <Compile Include="Enums\NetProfitTypes.cs" />
+    <Compile Include="Enums\TradeTypes.cs" />
     <Compile Include="Enums\BasePairs.cs" />
     <Compile Include="Enums\TimeIntervalTypes.cs" />
     <Compile Include="Enums\StrategyTypes.cs" />

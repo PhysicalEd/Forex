@@ -11,32 +11,33 @@ namespace API.Security
     {
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            return Task.Factory.StartNew(() =>
-            {
-                var username = context.UserName;
-                var password = context.Password;
+            //return Task.Factory.StartNew(() =>
+            //{
+            //    var username = context.UserName;
+            //    var password = context.Password;
 
-                var accountMgr = Dependency.Dependency.Resolve<IAccountManager>();
-                var login = accountMgr.SignIn(username, password);
+            //    var accountMgr = Dependency.Dependency.Resolve<IAccountManager>();
+            //    var login = accountMgr.SignIn(username, password);
 
-                //var login = Dependency.Resolve<IPersonManager>().GetTestLogin();
-                if (login != null)
-                {
-                    var claims = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Name, login.FirstName),
-                        new Claim("UserID", login.LoginID.ToString())
-                    };
+            //    //var login = Dependency.Resolve<IPersonManager>().GetTestLogin();
+            //    if (login != null)
+            //    {
+            //        var claims = new List<Claim>()
+            //        {
+            //            new Claim(ClaimTypes.Name, login.FirstName),
+            //            new Claim("UserID", login.LoginID.ToString())
+            //        };
 
                 
-                    ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
-                    context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
-                }
-                else
-                {
-                    context.SetError("invalid_grant", "Error");
-                }
-            });
+            //        ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
+            //        context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
+            //    }
+            //    else
+            //    {
+            //        context.SetError("invalid_grant", "Error");
+            //    }
+            //});
+            return null;
         }
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)

@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Contracts.DataManagers;
 
 namespace API.Controllers
 {
@@ -7,7 +9,8 @@ namespace API.Controllers
         [HttpGet]
         public string Test()
         {
-            return "Worked";
+            Dependency.Dependency.Resolve<IStrategyManager>().GetReferenceValues(0, new DateTime(), new DateTime());
+            return "OK";
         }
     }
 

@@ -13,6 +13,8 @@ namespace Contracts.Repositories
 
 	    IEnumerable<RETURNTYPE> ExecuteStoreQuery<RETURNTYPE>(string commandText, object[] parameters);
 
+	    void ExecuteStoreCommand(string commandText, object[] parameters);
+
 
 
 	}

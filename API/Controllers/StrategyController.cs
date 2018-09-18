@@ -12,28 +12,28 @@ namespace API.Controllers
 {
     public class StrategyController : ApiController
     {
-        [HttpPost]
-        [HttpGet]
-        public StrategyTesterModel StrategyTester([FromUri] StrategyTesterModelFilter filters)
-        {
-            var model = new StrategyTesterModel();
-            model.Filters = filters ?? new StrategyTesterModelFilter();
-            model.StrategyTypes = Dependency.Dependency.Resolve<IStrategyManager>().GetStrategyTypes();
-            return model;
-        }
+        //[HttpPost]
+        //[HttpGet]
+        //public StrategyTesterModel StrategyTester([FromUri] StrategyTesterModelFilter filters)
+        //{
+        //    var model = new StrategyTesterModel();
+        //    model.Filters = filters ?? new StrategyTesterModelFilter();
+        //    model.StrategyTypes = Dependency.Dependency.Resolve<IStrategyManager>().GetStrategyTypes();
+        //    return model;
+        //}
 
-        [HttpPost]
-        [HttpGet]
-        public BreakoutStrategyModel BreakoutTester([FromUri] BreakoutStrategyModelFilter filters)
-        {
-            var model = new BreakoutStrategyModel();
-            model.Filters = filters ?? new BreakoutStrategyModelFilter();
-            var mgr = Dependency.Dependency.Resolve<IStrategyManager>();
+        //[HttpPost]
+        //[HttpGet]
+        //public BreakoutStrategyModel BreakoutTester([FromUri] BreakoutStrategyModelFilter filters)
+        //{
+        //    var model = new BreakoutStrategyModel();
+        //    model.Filters = filters ?? new BreakoutStrategyModelFilter();
+        //    var mgr = Dependency.Dependency.Resolve<IStrategyManager>();
             
-            model.TickData = mgr.GetTickData(model.Filters.Pair, model.Filters.StartTime, model.Filters.EndTime);
+        //    model.TickData = mgr.GetTickData(model.Filters.Pair, model.Filters.StartTime, model.Filters.EndTime);
 
-            return model;
-        }
+        //    return model;
+        //}
 
         [HttpPost]
         [HttpGet]
@@ -43,22 +43,24 @@ namespace API.Controllers
             model.Filters = new BreakoutStrategyModelFilter();
             // Hard code testing...
             model.Filters.Pair = BasePairs.GBPNZD;
-            model.Filters.StartTime = new DateTime(2018,1,1).ToUniversalTime();
-            model.Filters.EndTime = new DateTime(2018, 2, 1).ToUniversalTime();
-            model.Filters.TradeTime = new DateTime(2018, 1,1,8,0,0).ToUniversalTime();
+            model.Filters.StartTime = new DateTime(2018,2,1).ToUniversalTime();
+            model.Filters.EndTime = new DateTime(2018, 2,20).ToUniversalTime();
+            model.Filters.TradeTime = new DateTime(2018, 2,1,8,0,0);
             model.Filters.TimeIntervalType = TimeIntervalTypes.Hours;
 
             var mgr = Dependency.Dependency.Resolve<IStrategyManager>();
 
-            // Get all tick data and put into memory...
-            model.TickData = mgr.GetTickData(model.Filters.Pair, model.Filters.StartTime, model.Filters.EndTime);
+            //// Get all tick data and put into memory...
+            //model.TickData = mgr.GetTickData(model.Filters.Pair, model.Filters.StartTime, model.Filters.EndTime);
 
-            var tradeHour = model.Filters.TradeTime.TimeOfDay.Hours;
-            var tradeMinute = model.Filters.TradeTime.TimeOfDay.Minutes;
+            //var tradeHour = model.Filters.TradeTime.TimeOfDay.Hours;
+            //var tradeMinute = model.Filters.TradeTime.TimeOfDay.Minutes;
 
 
-            var firstTradeTime = model.TickData.FindAll(x=>x.TickTime.TimeOfDay.Hours == tradeHour && x.TickTime.TimeOfDay.Minutes == tradeMinute);
-
+            //var firstTradeTime = model.TickData.FindAll(x=>x.TickTime.TimeOfDay.Hours == tradeHour && x.TickTime.TimeOfDay.Minutes == tradeMinute);
+            //model.TradeSessions = mgr.Test(model.Filters.Pair, model.Filters.StartTime,
+            //    model.Filters.EndTime.Value, model.Filters.TradeTime, model.Filters.TimeIntervalType, model.Filters.ReferenceOffset,
+            //    model.Filters.CloseOffset, 5);
 
             //var referenceCandle = 
 
