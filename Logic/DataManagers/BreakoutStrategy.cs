@@ -114,7 +114,6 @@ namespace Logic.DataManagers
                 this.ReferenceCandle.Low = data.Aggregate((x, y) => x.Bid < y.Bid ? x : y);
                 this.ReferenceCandle.Open = data.FirstOrDefault();
                 this.ReferenceCandle.Close = data.LastOrDefault();
-
             }
         }
 
