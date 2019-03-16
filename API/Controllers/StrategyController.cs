@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Http;
 using API.Models;
@@ -12,6 +13,19 @@ namespace API.Controllers
 {
     public class StrategyController : ApiController
     {
+        public string CSVBasePath { get; set; } = @"D:\Google Drive\Projects\Forex\";
+        public void LoadCSVToDB()
+        {
+            // EO TODO This should be dynamic...
+            var csvName = @"Test.csv";
+            var csvFullPath = this.CSVBasePath + csvName;
+            if (File.Exists(csvFullPath))
+            {
+                // Load CSV here...
+
+            }
+        }
+
         //[HttpPost]
         //[HttpGet]
         //public StrategyTesterModel StrategyTester([FromUri] StrategyTesterModelFilter filters)

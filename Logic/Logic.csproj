@@ -84,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettingsRetriever.cs" />
+    <Compile Include="DataManagers\CandleManager.cs" />
+    <Compile Include="DataManagers\TestManager.cs" />
+    <Compile Include="DataManagers\TDICrossStrategy.cs" />
     <Compile Include="DataManagers\BreakoutStrategy.cs" />
     <Compile Include="DataManagers\StrategyManager.cs" />
     <Compile Include="EntityFrameworkInitializer.cs" />

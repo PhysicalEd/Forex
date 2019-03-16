@@ -6,7 +6,7 @@ using Contracts.Entities.Data;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 8 May 2018 
+// Code Generation Template developed by Ben Liebert, 16 Feb 2019 
 namespace Data.EF.Database {
 
 	/// <summary>
@@ -26,6 +26,15 @@ namespace Data.EF.Database {
 			modelBuilder.Entity<CSVImport>().Property(x => x.DateDescription);
 			modelBuilder.Entity<CSVImport>().Property(x => x.ImportedRows);
 			modelBuilder.Entity<CSVImport>().Property(x => x.PairID);
+		
+			// CSVTest
+			modelBuilder.Entity<CSVTest>().HasKey(x => x.CSVTestID);
+			modelBuilder.Entity<CSVTest>().ToTable("CSVTest");
+			modelBuilder.Entity<CSVTest>().Property(x => x.CSVTestID);
+			modelBuilder.Entity<CSVTest>().Property(x => x.CSVFIleName);
+			modelBuilder.Entity<CSVTest>().Property(x => x.TickDate);
+			modelBuilder.Entity<CSVTest>().Property(x => x.Bid);
+			modelBuilder.Entity<CSVTest>().Property(x => x.Ask);
 		
 			// Pair
 			modelBuilder.Entity<Pair>().HasKey(x => x.PairID);
@@ -56,6 +65,23 @@ namespace Data.EF.Database {
             get { 
 				return Core.CreateObjectSet<CSVImport>();
 				// var set = Core.CreateObjectSet<CSVImport>();
+	            // set.MergeOption = MergeOption.NoTracking;
+	            // return set;
+			}
+        }
+	
+
+        public CSVTest GetOrCreateCSVTest(int? CSVTestID) {
+            if (CSVTestID.GetValueOrDefault(0) > 0) return this.CSVTest.FirstOrDefault(x => x.CSVTestID == CSVTestID);
+            var newItem = new CSVTest();
+			this.CSVTest.AddObject(newItem);
+            return newItem;
+        }
+
+		public IObjectSet<Contracts.Entities.Data.CSVTest> CSVTest        {
+            get { 
+				return Core.CreateObjectSet<CSVTest>();
+				// var set = Core.CreateObjectSet<CSVTest>();
 	            // set.MergeOption = MergeOption.NoTracking;
 	            // return set;
 			}

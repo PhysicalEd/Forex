@@ -8,7 +8,7 @@ using System.Text;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 8 May 2018 
+// Code Generation Template developed by Ben Liebert, 16 Feb 2019 
 namespace Contracts.Entities.Data {
 
 	/// <summary>
@@ -22,6 +22,19 @@ namespace Contracts.Entities.Data {
 		public int ImportedRows { get; set; }
 		public int PairID { get; set; }
 		public bool IsNew { get { return (this.CSVImportID == 0); } }
+	}
+		
+	/// <summary>
+	/// Interface of our generic CSVTest object
+	/// </summary>
+	public partial class CSVTest
+	{
+		public int CSVTestID { get; set; }
+		public string CSVFIleName { get; set; }
+		public DateTime? TickDate { get; set; }
+		public decimal? Bid { get; set; }
+		public decimal? Ask { get; set; }
+		public bool IsNew { get { return (this.CSVTestID == 0); } }
 	}
 		
 	/// <summary>

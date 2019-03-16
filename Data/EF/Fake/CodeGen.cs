@@ -5,7 +5,7 @@ using Contracts.Entities.Data;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 8 May 2018 
+// Code Generation Template developed by Ben Liebert, 16 Feb 2019 
 namespace Data.EF.Fake {
 
 	/// <summary>
@@ -17,6 +17,7 @@ namespace Data.EF.Fake {
 		private void CreateIdentityvalues()
 		{
 			this.CSVImport.Where(x => x.CSVImportID == 0).ToList().ForEach(x => x.CSVImportID = this.CSVImport.Max(y => y.CSVImportID) + 1);
+			this.CSVTest.Where(x => x.CSVTestID == 0).ToList().ForEach(x => x.CSVTestID = this.CSVTest.Max(y => y.CSVTestID) + 1);
 			this.Pair.Where(x => x.PairID == 0).ToList().ForEach(x => x.PairID = this.Pair.Max(y => y.PairID) + 1);
 			this.Tick.Where(x => x.TickID == 0).ToList().ForEach(x => x.TickID = this.Tick.Max(y => y.TickID) + 1);
 		}
@@ -38,6 +39,26 @@ namespace Data.EF.Fake {
                     _CSVImport = new FakeObjectSet<CSVImport>(result);
                 }
                 return _CSVImport;
+            }
+        }
+	
+		public CSVTest GetOrCreateCSVTest(int? CSVTestID) {
+            CSVTest item = this.CSVTest.FirstOrDefault(x => x.CSVTestID == CSVTestID);
+			if (item == null){
+				item = new CSVTest();
+				this.CSVTest.AddObject(item);
+			}
+			return item;
+        }
+
+		private IObjectSet<CSVTest> _CSVTest = null;
+        public IObjectSet<CSVTest> CSVTest {
+            get {
+                if (_CSVTest == null) {
+                    var result = new List<CSVTest>();
+                    _CSVTest = new FakeObjectSet<CSVTest>(result);
+                }
+                return _CSVTest;
             }
         }
 	

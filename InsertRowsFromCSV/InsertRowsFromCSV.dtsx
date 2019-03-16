@@ -1,0 +1,1731 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2019 4:55:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="COMPUTER"
+  DTS:CreatorName="COMPUTER\Ed"
+  DTS:DTSID="{23AC88A6-D5C4-4C30-83F7-2FAC24F8C1E6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4224.16"
+  DTS:LocaleID="5129"
+  DTS:ObjectName="InsertRowsFromCSV"
+  DTS:PackageType="5"
+  DTS:VersionBuild="153"
+  DTS:VersionGUID="{7110CF44-DEF9-4468-AE48-C92C13A4FFE6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[COMPUTER.Forex.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+      DTS:ObjectName="COMPUTER.Forex.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=COMPUTER;User ID=sa;Initial Catalog=Forex;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw7nU812ge0mBldWTfEPgCwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABt7Zf3aN8VrS3ZsHUrFwSnmKKRuGsDaVXNkvO64sUKwQAAAAAOgAAAAAIAACAAAAApXmE+S+ZWF1ntV3MVjR3m7Na8gcktG5T+zDncrJKHfiAAAACgubHNT5UhG7WPYygj0wA2dcY9XAOpIeIpvABEGFxYR0AAAACEkORgivfms1XqFvagL0fsRjm0DlamgdwIdIAtH5hSdCRNCRUXgCO+xAo5nVtFZoq/+rGFmhOOY76cW0GBUXN6</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6CA26F5A-1D37-4161-B075-670E2E7D57EC}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="5129"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Ed\Desktop\ForexSSIS\DAT_ASCII_GBPUSD_T_201802.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DateTime"
+              DTS:DTSID="{2C4EAB8C-728F-4ED4-B755-ACF50D894649}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Bid"
+              DTS:DTSID="{8270072D-1946-49E4-AB41-C51252644CEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ask"
+              DTS:DTSID="{9D73DAD1-137C-45C6-967F-0B5A43C0E65A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="0"
+              DTS:DTSID="{40443823-57A4-4B24-B78E-FA82E4F4682C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9DFEEC39-6A6D-4912-A6F8-BEE5BECC5B89}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CSVImportID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E1778C1B-C44E-4B82-B66E-B197C0805E25}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CSVRowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1D63EE3A-A9E0-4B5C-B489-1E593AFF77AC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FolderPath]+&quot;\\&quot;+  @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{50825844-C50D-4FF0-AA45-6D2AE693339A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9064A06C-7CDD-49FB-B027-51EE452DC868}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FinishedFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\Finished</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F026115F-FA28-48F9-8508-84803EF12E85}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{513D4B92-527B-4D6A-BA3D-7D7D31D7A461}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NumberOfRowsInsertedTick">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BDDA731C-B95E-4CA1-86AD-63C063507B4D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PairID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{03E5A3DE-1B4F-41E5-9427-C932823C319E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PreprocessedStagingTable">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{A1CE916C-56ED-477D-86A7-425AC197A7BA}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{8910426F-6B7E-480A-8D19-5E94E74E64D9}"
+        DTS:ObjectName="{8910426F-6B7E-480A-8D19-5E94E74E64D9}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::FolderPath]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\Ed\Desktop\ForexSSIS" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0095E149-DC13-45D7-BC85-B0D58685A5B5}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="DateDescription">
+          <DTS:VariableValue
+            DTS:DataType="8">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{A7DA1D8D-5834-4E2D-9260-7ED1F9EC8466}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="LoadStatusFlg">
+          <DTS:VariableValue
+            DTS:DataType="2">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{488AC403-7686-40F0-83C1-7F90380AF1AD}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="PairName">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7D7C8C98-D7C0-4AC2-B242-8FBE89EC7905}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SkippedFolder">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\Skipped</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{13049AF5-57DD-42E9-A66D-3C5C1E3EA798}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="SQLRowCount">
+          <DTS:VariableValue
+            DTS:DataType="2">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{4C964F36-904D-436C-81DA-843A08703C9E}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="SQLRowCount_Staging">
+          <DTS:VariableValue
+            DTS:DataType="5">0.</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\DFT_CSVRowCount"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{9AA00C82-B984-4DA5-908E-3FBD1BBA2AA7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_CSVRowCount"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="5129"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[DateTime]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateTime]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[DateTime]"
+                          name="DateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[Bid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Bid]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[Bid]"
+                          name="Bid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[Ask]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ask]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].Columns[Ask]"
+                          name="Ask"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateTime]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Bid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Bid" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ask]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ask" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="0" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::CSVRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\DFT_CSVRowCount.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count.Inputs[Row Count Input 1]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\DFT_LoadToStagingTable"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E3DCF0B9-5B0A-4532-B824-7FD2E424479E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_LoadToStagingTable"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Output].Columns[PairID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Output].Columns[PairID]"
+                          name="PairID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::PairID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::PairID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="5129"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[DateTime]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateTime]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[DateTime]"
+                          name="DateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Bid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Bid]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Bid]"
+                          name="Bid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Ask]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ask]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Ask]"
+                          name="Ask"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateTime]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Bid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Bid" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ask]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ask" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="0" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[_Staging]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[COMPUTER.Forex.sa]"
+                      connectionManagerRefId="Package.ConnectionManagers[COMPUTER.Forex.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateTime]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DateTime"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[DateTime]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Bid"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bid]"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Bid]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ask]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Ask"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ask]"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output].Columns[Ask]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PairID]"
+                          cachedDataType="i4"
+                          cachedName="PairID"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PairID]"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Output].Columns[PairID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTime]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Bid" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ask]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ask" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PairID]"
+                          dataType="i4"
+                          name="PairID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\DFT_LoadToStagingTable.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\DFT_LoadToStagingTable.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_Insert filename in record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F0C261C6-8E86-4D02-83B1-E99EF154A871}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_Insert filename in record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"declare @NumberOfRowsInserted int
+select @NumberOfRowsInserted=count(*)
+from Tick
+where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
+update CSVImport
+set importedrows = @NumberOfRowsInserted
+where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="declare @NumberOfRowsInserted int&#xA;select @NumberOfRowsInserted=count(*)&#xA;from Tick&#xA;where CSVImportID = 0&#xA;update CSVImport&#xA;set importedrows = @NumberOfRowsInserted&#xA;where CSVImportID = 0&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_IsFileLoaded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3C768AA6-D79C-4350-A199-42BF5FC56AF0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_IsFileLoaded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"DECLARE @FileName VARCHAR(100)
+DECLARE @FileExistsFlg bit
+DECLARE @SQLRowCount int
+SET @FileName='"+@[User::FileName] +"'
+
+IF EXISTS (SELECT 1
+           FROM   [dbo].[CSVImport]
+           WHERE  CSVFileName=@FileName)
+  BEGIN
+      SET @FileExistsFlg = 1
+	  SET @SQLRowCount = (Select top 1 ImportedRows from [dbo].[CSVImport] WHERE CSVfilename = @FileName)
+  END
+ELSE
+BEGIN
+SET @FileExistsFlg = 0 END
+
+Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, (select substring(@FileName, 11,6) as PairName), (select substring(@FileName, 20,6) as DateDescription)"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="DECLARE @FileName VARCHAR(100)&#xA;DECLARE @FileExistsFlg bit&#xA;DECLARE @SQLRowCount int&#xA;SET @FileName=''&#xA;&#xA;IF EXISTS (SELECT 1&#xA;           FROM   [dbo].[CSVImport]&#xA;           WHERE  CSVFileName=@FileName)&#xA;  BEGIN&#xA;      SET @FileExistsFlg = 1&#xA;&#x9;  SET @SQLRowCount = (Select top 1 ImportedRows from [dbo].[CSVImport] WHERE CSVfilename = @FileName)&#xA;  END&#xA;ELSE&#xA;BEGIN&#xA;SET @FileExistsFlg = 0 END&#xA;&#xA;Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, (select substring(@FileName, 11,6) as PairName), (select substring(@FileName, 20,6) as DateDescription)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::LoadStatusFlg" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::SQLRowCount" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="2"
+                SQLTask:DtsVariableName="User::PairName" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="3"
+                SQLTask:DtsVariableName="User::DateDescription" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{214C8CBE-D1A7-462A-8690-82556DBD119A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_ProcessStagingTable"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"insert into [Tick]
+select dbo.ConvertToUtc(dbo.StringToDate(s.DateTime)) as TickTime, CAST(s.Bid as Decimal(19,6)) as Bid, CAST(s.Ask as Decimal(19,6)) as Ask, "+ (DT_WSTR, 10)@[User::PairID] +" as PairID, "+ (DT_WSTR, 10)@[User::CSVImportID] +" as CSVImportID
+from [_Staging] s"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="insert into [Tick]&#xA;select dbo.ConvertToUtc(dbo.StringToDate(s.DateTime)) as TickTime, CAST(s.Bid as Decimal(19,6)) as Bid, CAST(s.Ask as Decimal(19,6)) as Ask, 0 as PairID, 0 as CSVImportID&#xA;from [_Staging] s" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_ResetTables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1352B1F6-B56A-45BB-A236-92EB1594BEC7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_ResetTables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="truncate table [_Staging]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_UpsertCSVImport"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3BA1C9C3-6666-493C-8787-0D376916E0D1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_UpsertCSVImport"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"
+declare @CSVImportID int
+select top 1 @CSVImportID = CSVImportID from CSVImport where CSVFileName = '"+ @[User::FileName] + "'
+
+if "+ (DT_WSTR, 10)@[User::CSVRowCount] +" &lt;&gt; "+ (DT_WSTR, 10)@[User::SQLRowCount] +"
+begin
+	delete from [Tick] where CSVImportID = @CSVImportID 
+end
+else
+begin
+insert into [CSVImport]
+values('" + @[User::DateDescription] + "', 0, "+ (DT_WSTR,10)@[User::PairID]+", '"+ @[User::FileName] + "')
+end
+select top 1 CSVImportID from [CSVImport] where CSVFileName = '" +@[User::FileName] + "'
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="&#xA;declare @CSVImportID int&#xA;select top 1 @CSVImportID = CSVImportID from CSVImport where CSVFileName = ''&#xA;&#xA;if 0 &lt;&gt; 0&#xA;begin&#xA;&#x9;delete from [Tick] where CSVImportID = @CSVImportID &#xA;end&#xA;else&#xA;begin&#xA;insert into [CSVImport]&#xA;values('0', 0, 0, '')&#xA;end&#xA;select top 1 CSVImportID from [CSVImport] where CSVFileName = ''&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::CSVImportID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_UpsertPairName"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CEBC534F-EDD4-43E4-B5C0-0C0DD81C0335}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_UpsertPairName"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"declare @PairDescription varchar(6)
+declare @PairID int
+
+set @PairDescription = '" + @[User::PairName] +"'
+
+select top 1 @PairID = p.PairID
+from Pair p
+where p.PairDescription = @PairDescription
+
+if @PairID is null
+begin
+	insert into Pair values (@PairDescription)
+	select top 1 @PairID = p.PairID
+	from Pair p
+	where p.PairDescription = @PairDescription
+end
+
+select @PairID as PairID
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="declare @PairDescription varchar(6)&#xA;declare @PairID int&#xA;&#xA;set @PairDescription = ''&#xA;&#xA;select top 1 @PairID = p.PairID&#xA;from Pair p&#xA;where p.PairDescription = @PairDescription&#xA;&#xA;if @PairID is null&#xA;begin&#xA;&#x9;insert into Pair values (@PairDescription)&#xA;&#x9;select top 1 @PairID = p.PairID&#xA;&#x9;from Pair p&#xA;&#x9;where p.PairDescription = @PairDescription&#xA;end&#xA;&#xA;select @PairID as PairID&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::PairID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Finished"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{EE710180-F2B0-4517-A2B5-FBABF6210398}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Finished"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FileFullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::FinishedFolder"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Skipped"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{F7E0FB85-FAF2-411E-85FD-E53EA974E5EF}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Skipped"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FileFullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::SkippedFolder"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{DAAA15DD-5CB5-4289-B1A7-309C80DBC121}"
+          DTS:Expression="@LoadStatusFlg==0"
+          DTS:From="Package\Foreach Loop Container\ESQL_IsFileLoaded"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\DFT_CSVRowCount" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{181BB43A-0178-46B6-9136-01C4F52A1821}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::LoadStatusFlg] == 1 &amp;&amp;  (@[User::SQLRowCount] == @[User::CSVRowCount])"
+          DTS:From="Package\Foreach Loop Container\DFT_CSVRowCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Skipped" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{F628B408-0EC5-4E8D-A5B4-53346AD84927}"
+          DTS:From="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\Finished" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{39D65FE2-3FE6-4F85-9859-4EE801E44F8C}"
+          DTS:From="Package\Foreach Loop Container\Finished"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container\ESQL_Insert filename in record" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{62C2F026-6D80-4E04-8A4F-8621279457B3}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::LoadStatusFlg] == 1 &amp;&amp;  (@[User::SQLRowCount] != @[User::CSVRowCount])"
+          DTS:From="Package\Foreach Loop Container\DFT_CSVRowCount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach Loop Container\ESQL_UpsertPairName" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{511BF4D2-10A9-4085-BEB3-756CAB9C2A79}"
+          DTS:From="Package\Foreach Loop Container\ESQL_UpsertPairName"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Foreach Loop Container\ESQL_UpsertCSVImport" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{A7292155-0201-4DE4-8E1D-9819057B780D}"
+          DTS:From="Package\Foreach Loop Container\ESQL_ResetTables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Foreach Loop Container\ESQL_IsFileLoaded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{929C0900-88F8-4263-A144-92EA4B02A159}"
+          DTS:From="Package\Foreach Loop Container\DFT_LoadToStagingTable"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Foreach Loop Container\ESQL_ProcessStagingTable" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{1F8F3F50-D3E6-4E7E-B4C7-A2BC05B3A048}"
+          DTS:From="Package\Foreach Loop Container\ESQL_UpsertCSVImport"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Foreach Loop Container\DFT_LoadToStagingTable" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{5E298BC7-EF99-42DD-A4FC-455343784B16}"
+          DTS:From="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\Foreach Loop Container\ESQL_Insert filename in record" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{E94B4C8A-63DF-43EE-90A7-90072C317B38}"
+          DTS:ObjectName="{E94B4C8A-63DF-43EE-90A7-90072C317B38}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\DFT_CSVRowCount"
+          TopLeft="55,128" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable"
+          TopLeft="535,214" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Foreach Loop Container\ESQL_Insert filename in record"
+          TopLeft="75,351" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Foreach Loop Container\ESQL_IsFileLoaded"
+          TopLeft="59,56" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
+          TopLeft="529,282" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach Loop Container\ESQL_ResetTables"
+          TopLeft="61,5.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Foreach Loop Container\ESQL_UpsertCSVImport"
+          TopLeft="487,68" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Foreach Loop Container\ESQL_UpsertPairName"
+          TopLeft="210,195" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\Foreach Loop Container\Finished"
+          TopLeft="583,369" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Foreach Loop Container\Skipped"
+          TopLeft="292,72" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="142,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="226,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,-56"
+              Start="0,0"
+              End="58.5,-56">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29,0"
+                    Point2="33,0"
+                    Point3="33,-4" />
+                  <mssgle:LineSegment
+                    End="33,-52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33,-52"
+                    Point2="33,-56"
+                    Point3="37,-56" />
+                  <mssgle:LineSegment
+                    End="58.5,-56" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25,1,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="632,324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,45"
+              Start="0,0"
+              End="10,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="6,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,22.5"
+                    Point2="10,22.5"
+                    Point3="10,26.5" />
+                  <mssgle:LineSegment
+                    End="10,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="583,390">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-282,-18"
+              Start="0,0"
+              End="-274.5,-18">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-137,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-137,0"
+                    Point2="-141,0"
+                    Point3="-141,-4" />
+                  <mssgle:LineSegment
+                    End="-141,-14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-141,-14"
+                    Point2="-141,-18"
+                    Point3="-145,-18" />
+                  <mssgle:LineSegment
+                    End="-274.5,-18" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="167.666666666667,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.333333333333,25"
+              Start="0,0"
+              End="105.333333333333,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.51082016879463" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.51082016879463"
+                    Point2="0,12.5108201687946"
+                    Point3="4,12.5108201687946" />
+                  <mssgle:LineSegment
+                    End="101.333333333333,12.5108201687946" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.333333333333,12.5108201687946"
+                    Point2="105.333333333333,12.5108201687946"
+                    Point3="105.333333333333,16.5108201687946" />
+                  <mssgle:LineSegment
+                    End="105.333333333333,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="44.6666666666665,17.5108201687946,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="332,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220,-85"
+              Start="0,0"
+              End="220,-77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-38.5141325130934" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-38.5141325130934"
+                    Point2="0,-42.5141325130934"
+                    Point3="4,-42.5141325130934" />
+                  <mssgle:LineSegment
+                    End="216,-42.5141325130934" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216,-42.5141325130934"
+                    Point2="220,-42.5141325130934"
+                    Point3="220,-46.5141325130934" />
+                  <mssgle:LineSegment
+                    End="220,-77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="227,26.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="1,50.5"
+              Start="0,0"
+              End="8.5,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="19.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5,0"
+                    Point2="23.5,0"
+                    Point3="23.5,4" />
+                  <mssgle:LineSegment
+                    End="23.5,46.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.5,46.5"
+                    Point2="23.5,50.5"
+                    Point3="19.5,50.5" />
+                  <mssgle:LineSegment
+                    End="8.5,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="633.5,256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="613,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22,104"
+              Start="0,0"
+              End="22,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.1183800623053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.1183800623053"
+                    Point2="0,42.1183800623053"
+                    Point3="4,42.1183800623053" />
+                  <mssgle:LineSegment
+                    End="18,42.1183800623053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18,42.1183800623053"
+                    Point2="22,42.1183800623053"
+                    Point3="22,46.1183800623053" />
+                  <mssgle:LineSegment
+                    End="22,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 9]"
+          TopLeft="599,324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-411,27"
+              Start="0,0"
+              End="-411,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,6.92485549132948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,6.92485549132948"
+                    Point2="0,10.9248554913295"
+                    Point3="-4,10.9248554913295" />
+                  <mssgle:LineSegment
+                    End="-407,10.9248554913295" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-407,10.9248554913295"
+                    Point2="-411,10.9248554913295"
+                    Point3="-411,14.9248554913295" />
+                  <mssgle:LineSegment
+                    End="-411,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="783,475"
+          Size="783,518"
+          Id="Package\Foreach Loop Container"
+          TopLeft="164,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\DFT_CSVRowCount">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count"
+          TopLeft="140,160" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Foreach Loop Container\DFT_CSVRowCount\Flat File Source"
+          TopLeft="136,62" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DFT_CSVRowCount.Paths[Flat File Source Output]"
+          TopLeft="208.25,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\DFT_LoadToStagingTable">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination"
+          TopLeft="223,252" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable\Flat File Source"
+          TopLeft="232,95" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable\Derived Column"
+          TopLeft="228,180" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable.Paths[Flat File Source Output]"
+          TopLeft="306.25,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DFT_LoadToStagingTable.Paths[Derived Column Output]"
+          TopLeft="306.75,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\DFT_LoadToStagingTable\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

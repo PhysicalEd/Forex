@@ -87,7 +87,9 @@
     <Compile Include="Cache\ICachable.cs" />
     <Compile Include="Cache\IPersistentStorage.cs" />
     <Compile Include="DataManagers\CodeGen.cs" />
+    <Compile Include="DataManagers\ITestManager.cs" />
     <Compile Include="DataManagers\IStrategyManager.cs" />
+    <Compile Include="Entities\Data\RawCSVRecord.cs" />
     <Compile Include="Entities\Data\ReferenceValuesSummary.cs" />
     <Compile Include="Entities\Data\SellOrderSummary.cs" />
     <Compile Include="Entities\Data\BuyOrderSummary.cs" />
