@@ -1,7 +1,7 @@
-﻿using Common.Extensions;
+﻿using Dependency.Extensions;
 using Contracts;
 
-namespace Common.Navigation
+namespace Dependency.Navigation
 {
 	public class LinkManager
 	{
@@ -12,7 +12,7 @@ namespace Common.Navigation
 		/// <returns></returns>
 		private string Format(string relativeUrl)
 		{
-			var siteRoot = Dependency.Dependency.Resolve<IEnvironment>().SiteRoot;
+			var siteRoot = Dependency.Resolve<IEnvironment>().SiteRoot;
 			relativeUrl = siteRoot + relativeUrl;
 			return relativeUrl;
 		}

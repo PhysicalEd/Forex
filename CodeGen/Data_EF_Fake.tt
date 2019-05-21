@@ -32,6 +32,7 @@ namespace Data.EF.Fake {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 			this.<#+ Write(table.Name); #>.Where(x => x.<#+ Write(table.Name); #>ID == 0).ToList().ForEach(x => x.<#+ Write(table.Name); #>ID = this.<#+ Write(table.Name); #>.Max(y => y.<#+ Write(table.Name); #>ID) + 1);
 <#+
@@ -42,6 +43,7 @@ namespace Data.EF.Fake {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 		public <#+ Write(table.Name); #> GetOrCreate<#+ Write(table.Name); #>(int? <#+ Write(table.Name); #>ID) {
             <#+ Write(table.Name); #> item = this.<#+ Write(table.Name); #>.FirstOrDefault(x => x.<#+ Write(table.Name); #>ID == <#+ Write(table.Name); #>ID);

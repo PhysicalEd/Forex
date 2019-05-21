@@ -27,6 +27,7 @@ namespace Contracts.Entities.Lists {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 	/// <summary>
 	/// A cachable list of <#+ Write(table.Name); #> objects

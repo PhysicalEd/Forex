@@ -10,7 +10,7 @@ namespace API.Models
         public virtual StrategyTypes StrategyType { get; set; }
         public virtual DateTime StartTime { get; set; } = new DateTime(2018, 1, 1).ToUniversalTime();
         public virtual DateTime? EndTime { get; set; } = DateTime.UtcNow;
-        public virtual BasePairs Pair { get; set; }
+        public virtual BasePair Pair { get; set; }
 
     }
 }

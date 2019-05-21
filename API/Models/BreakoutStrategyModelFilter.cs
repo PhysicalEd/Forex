@@ -19,7 +19,7 @@ namespace API.Models
         public int ReferenceOffset { get; set; } = 2;
         public int CloseOffset { get; set; } = 6;
 
-        public TimeIntervalTypes TimeIntervalType { get; set; }
+        public CandleTypes CandleType { get; set; }
 
         //public 
     }

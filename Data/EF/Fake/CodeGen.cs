@@ -5,7 +5,7 @@ using Contracts.Entities.Data;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 16 Feb 2019 
+// Code Generation Template developed by Ben Liebert, 21 May 2019 
 namespace Data.EF.Fake {
 
 	/// <summary>
@@ -16,12 +16,54 @@ namespace Data.EF.Fake {
 
 		private void CreateIdentityvalues()
 		{
+			this.Candle.Where(x => x.CandleID == 0).ToList().ForEach(x => x.CandleID = this.Candle.Max(y => y.CandleID) + 1);
+			this.CandleType.Where(x => x.CandleTypeID == 0).ToList().ForEach(x => x.CandleTypeID = this.CandleType.Max(y => y.CandleTypeID) + 1);
 			this.CSVImport.Where(x => x.CSVImportID == 0).ToList().ForEach(x => x.CSVImportID = this.CSVImport.Max(y => y.CSVImportID) + 1);
-			this.CSVTest.Where(x => x.CSVTestID == 0).ToList().ForEach(x => x.CSVTestID = this.CSVTest.Max(y => y.CSVTestID) + 1);
+			this.FileDownloadStatus.Where(x => x.FileDownloadStatusID == 0).ToList().ForEach(x => x.FileDownloadStatusID = this.FileDownloadStatus.Max(y => y.FileDownloadStatusID) + 1);
 			this.Pair.Where(x => x.PairID == 0).ToList().ForEach(x => x.PairID = this.Pair.Max(y => y.PairID) + 1);
 			this.Tick.Where(x => x.TickID == 0).ToList().ForEach(x => x.TickID = this.Tick.Max(y => y.TickID) + 1);
 		}
     
+		public Candle GetOrCreateCandle(int? CandleID) {
+            Candle item = this.Candle.FirstOrDefault(x => x.CandleID == CandleID);
+			if (item == null){
+				item = new Candle();
+				this.Candle.AddObject(item);
+			}
+			return item;
+        }
+
+		private IObjectSet<Candle> _Candle = null;
+        public IObjectSet<Candle> Candle {
+            get {
+                if (_Candle == null) {
+                    var result = new List<Candle>();
+                    _Candle = new FakeObjectSet<Candle>(result);
+                }
+                return _Candle;
+            }
+        }
+	
+		public CandleType GetOrCreateCandleType(int? CandleTypeID) {
+            CandleType item = this.CandleType.FirstOrDefault(x => x.CandleTypeID == CandleTypeID);
+			if (item == null){
+				item = new CandleType();
+				this.CandleType.AddObject(item);
+			}
+			return item;
+        }
+
+		private IObjectSet<CandleType> _CandleType = null;
+        public IObjectSet<CandleType> CandleType {
+            get {
+                if (_CandleType == null) {
+                    var result = new List<CandleType>();
+                    _CandleType = new FakeObjectSet<CandleType>(result);
+                }
+                return _CandleType;
+            }
+        }
+	
 		public CSVImport GetOrCreateCSVImport(int? CSVImportID) {
             CSVImport item = this.CSVImport.FirstOrDefault(x => x.CSVImportID == CSVImportID);
 			if (item == null){
@@ -42,23 +84,23 @@ namespace Data.EF.Fake {
             }
         }
 	
-		public CSVTest GetOrCreateCSVTest(int? CSVTestID) {
-            CSVTest item = this.CSVTest.FirstOrDefault(x => x.CSVTestID == CSVTestID);
+		public FileDownloadStatus GetOrCreateFileDownloadStatus(int? FileDownloadStatusID) {
+            FileDownloadStatus item = this.FileDownloadStatus.FirstOrDefault(x => x.FileDownloadStatusID == FileDownloadStatusID);
 			if (item == null){
-				item = new CSVTest();
-				this.CSVTest.AddObject(item);
+				item = new FileDownloadStatus();
+				this.FileDownloadStatus.AddObject(item);
 			}
 			return item;
         }
 
-		private IObjectSet<CSVTest> _CSVTest = null;
-        public IObjectSet<CSVTest> CSVTest {
+		private IObjectSet<FileDownloadStatus> _FileDownloadStatus = null;
+        public IObjectSet<FileDownloadStatus> FileDownloadStatus {
             get {
-                if (_CSVTest == null) {
-                    var result = new List<CSVTest>();
-                    _CSVTest = new FakeObjectSet<CSVTest>(result);
+                if (_FileDownloadStatus == null) {
+                    var result = new List<FileDownloadStatus>();
+                    _FileDownloadStatus = new FakeObjectSet<FileDownloadStatus>(result);
                 }
-                return _CSVTest;
+                return _FileDownloadStatus;
             }
         }
 	

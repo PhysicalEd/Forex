@@ -29,6 +29,7 @@ namespace Contracts.Repositories {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 		Entities.Data.<#+ Write(table.Name); #> GetOrCreate<#+ Write(table.Name); #>(int? <#+ Write(table.Name); #>ID);
         IObjectSet<Entities.Data.<#+ Write(table.Name); #>> <#+ Write(table.Name); #> { get; }

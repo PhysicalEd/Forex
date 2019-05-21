@@ -10,6 +10,5 @@ namespace Contracts.Entities.Data
         public Tick Low { get; set; }
         public Tick Open { get; set; }
         public Tick Close { get; set; }
-
     }
 }

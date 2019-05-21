@@ -34,6 +34,7 @@ namespace Data.EF.Database {
 <#+
 	foreach(Table table in base.Tables)
 	{
+			if (table.Name == "_Staging") continue;
 #>
 			// <#+ WriteLine(table.Name); #>
 			modelBuilder.Entity<<#+ Write(table.Name); #>>().HasKey(x => x.<#+ Write(table.Name); #>ID);
@@ -55,6 +56,7 @@ namespace Data.EF.Database {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 
         public <#+ Write(table.Name); #> GetOrCreate<#+ Write(table.Name); #>(int? <#+ Write(table.Name); #>ID) {

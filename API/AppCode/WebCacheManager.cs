@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Caching;
-using Common;
+using Dependency;
 using Contracts.Cache;
 
 namespace API.AppCode

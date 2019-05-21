@@ -1,6 +1,6 @@
 ﻿using Contracts;
 
-namespace Common
+namespace Dependency
 {
     public class Configuration
 	{
@@ -25,7 +25,7 @@ namespace Common
 		{
 			get
 			{
-				if (_Config == null) { _Config = Dependency.Dependency.Resolve<IAppSettingsRetriever>(); }
+				if (_Config == null) { _Config = Dependency.Resolve<IAppSettingsRetriever>(); }
 				return _Config;
 			}
 		}
@@ -80,7 +80,7 @@ namespace Common
 		{
 			get
 			{
-				var env = Dependency.Dependency.Resolve<IEnvironment>();
+				var env = Dependency.Resolve<IEnvironment>();
 				return env.SiteRoot;
 			}
 		}

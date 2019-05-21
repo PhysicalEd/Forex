@@ -9,14 +9,14 @@ namespace Contracts.DataManagers
     public interface IStrategyManager
     {
         //List<EnumSummary<StrategyTypes>> GetStrategyTypes();
-        //List<Tick> GetTickData(BasePairs basePair, DateTime? startDate, DateTime? endDate);
-        //DateTime AddTimeInterval(DateTime date, int timeUnits, TimeIntervalTypes type);
+        //List<Tick> GetTickData(BasePair basePair, DateTime? startDate, DateTime? endDate);
+        //DateTime AddTimeInterval(DateTime date, int timeUnits, CandleTypes type);
 
-        //List<BreakoutTradeSessionSummary> GetBreakoutTradeSessions(BasePairs pair, DateTime startDate, DateTime endDate, DateTime tradeTime, TimeIntervalTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet, int brokerSpreadInPips);
+        //List<BreakoutTradeSessionSummary> GetBreakoutTradeSessions(BasePair pair, DateTime startDate, DateTime endDate, DateTime tradeTime, CandleTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet, int brokerSpreadInPips);
 
-        //List<BreakoutTradeSessionSummary> Test(BasePairs pair, DateTime startDate, DateTime endDate,
-        //    DateTime tradeTime, TimeIntervalTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet,
-        //    int brokerSpreadInPips, TimeIntervalTypes sessionInterval = TimeIntervalTypes.Days);
+        //List<BreakoutTradeSessionSummary> Test(BasePair pair, DateTime startDate, DateTime endDate,
+        //    DateTime tradeTime, CandleTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet,
+        //    int brokerSpreadInPips, CandleTypes sessionInterval = CandleTypes.Days);
         CandleSummary GetReferenceValues(int pairID, DateTime referenceStartTime, DateTime referenceEndTime);
 
 

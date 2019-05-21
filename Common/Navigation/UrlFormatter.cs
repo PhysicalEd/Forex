@@ -1,4 +1,4 @@
-﻿namespace Common.Navigation
+﻿namespace Dependency.Navigation
 {
 	/// <summary>
 	/// Ensures the given URL is correctly formatted

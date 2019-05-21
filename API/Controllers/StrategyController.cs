@@ -56,11 +56,11 @@ namespace API.Controllers
             var model = new BreakoutStrategyModel();
             model.Filters = new BreakoutStrategyModelFilter();
             // Hard code testing...
-            model.Filters.Pair = BasePairs.GBPNZD;
+            model.Filters.Pair = BasePair.GBPNZD;
             model.Filters.StartTime = new DateTime(2018,2,1).ToUniversalTime();
             model.Filters.EndTime = new DateTime(2018, 2,20).ToUniversalTime();
             model.Filters.TradeTime = new DateTime(2018, 2,1,8,0,0);
-            model.Filters.TimeIntervalType = TimeIntervalTypes.Hours;
+            model.Filters.CandleType = CandleTypes.Hours;
 
             var mgr = Dependency.Dependency.Resolve<IStrategyManager>();
 
@@ -73,7 +73,7 @@ namespace API.Controllers
 
             //var firstTradeTime = model.TickData.FindAll(x=>x.TickTime.TimeOfDay.Hours == tradeHour && x.TickTime.TimeOfDay.Minutes == tradeMinute);
             //model.TradeSessions = mgr.Test(model.Filters.Pair, model.Filters.StartTime,
-            //    model.Filters.EndTime.Value, model.Filters.TradeTime, model.Filters.TimeIntervalType, model.Filters.ReferenceOffset,
+            //    model.Filters.EndTime.Value, model.Filters.TradeTime, model.Filters.CandleType, model.Filters.ReferenceOffset,
             //    model.Filters.CloseOffset, 5);
 
             //var referenceCandle = 

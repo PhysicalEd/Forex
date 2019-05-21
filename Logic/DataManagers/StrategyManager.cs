@@ -61,15 +61,15 @@ namespace Logic.DataManagers
         //    return result;
         //}
 
-        //public List<EnumSummary<BasePairs>> GetBasePairs()
+        //public List<EnumSummary<BasePair>> GetBasePairs()
         //{
-        //    var result = new List<EnumSummary<BasePairs>>();
-        //    result.Add(new EnumSummary<BasePairs>(BasePairs.GBPNZD, "GBP -> NZD"));
-        //    result.Add(new EnumSummary<BasePairs>(BasePairs.GBPUSD, "GBP -> USD"));
+        //    var result = new List<EnumSummary<BasePair>>();
+        //    result.Add(new EnumSummary<BasePair>(BasePair.GBPNZD, "GBP -> NZD"));
+        //    result.Add(new EnumSummary<BasePair>(BasePair.GBPUSD, "GBP -> USD"));
         //    return result;
         //}
 
-        //public List<Tick> GetTickData(BasePairs basePair, DateTime? startDate, DateTime? endDate)
+        //public List<Tick> GetTickData(BasePair basePair, DateTime? startDate, DateTime? endDate)
         //{
 
         //    using (var cxt = DataStore.CreateDataStore())
@@ -99,26 +99,26 @@ namespace Logic.DataManagers
         //    }
         //}
 
-        //public DateTime AddTimeInterval(DateTime date, int timeUnits, TimeIntervalTypes type)
+        //public DateTime AddTimeInterval(DateTime date, int timeUnits, CandleTypes type)
         //{
         //    switch (type)
         //    {
-        //        case (TimeIntervalTypes.Minutes):
+        //        case (CandleTypes.Minutes):
         //            return date.AddMinutes(timeUnits);
-        //        case (TimeIntervalTypes.Hours):
+        //        case (CandleTypes.Hours):
         //            return date.AddHours(timeUnits);
-        //        case (TimeIntervalTypes.Days):
+        //        case (CandleTypes.Days):
         //            return date.AddDays(timeUnits);
-        //        case (TimeIntervalTypes.Weeks):
+        //        case (CandleTypes.Weeks):
         //            return date.AddDays(timeUnits * 7);
-        //        case (TimeIntervalTypes.Months):
+        //        case (CandleTypes.Months):
         //            return date.AddMonths(timeUnits);
         //        default:
-        //            throw new Exception("Can't add this time interval mate");
+        //            throw new Exception("Can't add this time candle mate");
         //    }
         //}
 
-        //private List<DateTime> GetAllSessionStartTimes(DateTime tradeStartTime, DateTime lastTickData, int timeUnits, TimeIntervalTypes intervalType)
+        //private List<DateTime> GetAllSessionStartTimes(DateTime tradeStartTime, DateTime lastTickData, int timeUnits, CandleTypes intervalType)
         //{
         //    var startTimes = new List<DateTime>();
         //    while (tradeStartTime < lastTickData)
@@ -129,7 +129,7 @@ namespace Logic.DataManagers
         //    return startTimes;
         //}
 
-        //public List<BreakoutTradeSessionSummary> GetBreakoutTradeSessions(BasePairs pair, DateTime startDate, DateTime endDate, DateTime tradeTime, TimeIntervalTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet, int brokerSpreadInPips)
+        //public List<BreakoutTradeSessionSummary> GetBreakoutTradeSessions(BasePair pair, DateTime startDate, DateTime endDate, DateTime tradeTime, CandleTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet, int brokerSpreadInPips)
         //{
         //    using (var cxt = DataStore.CreateDataStore())
         //    {
@@ -147,7 +147,7 @@ namespace Logic.DataManagers
         //        //{
         //        //    var tradeSession = new BreakoutTradeSessionSummary();
                     
-        //        //    var nextStartTimeForSession = this.AddTimeInterval(firstCandleTime, 1, TimeIntervalTypes.Days);
+        //        //    var nextStartTimeForSession = this.AddTimeInterval(firstCandleTime, 1, CandleTypes.Days);
         //        //    var hasOrder = false;
         //        //    var hasSoldOrder = false;
         //        //    while (firstCandleTime < nextStartTimeForSession)
@@ -233,9 +233,9 @@ namespace Logic.DataManagers
         //    }
         //}
 
-        //public List<BreakoutTradeSessionSummary> Test(BasePairs pair, DateTime startDate, DateTime endDate,
-        //    DateTime tradeTime, TimeIntervalTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet,
-        //    int brokerSpreadInPips, TimeIntervalTypes sessionInterval = TimeIntervalTypes.Days)
+        //public List<BreakoutTradeSessionSummary> Test(BasePair pair, DateTime startDate, DateTime endDate,
+        //    DateTime tradeTime, CandleTypes tradeBarInterval, int referenceBarsOffset, int closeBarsOffSet,
+        //    int brokerSpreadInPips, CandleTypes sessionInterval = CandleTypes.Days)
         //{
         //    using (var cxt = DataStore.CreateDataStore())
         //    {

@@ -55,11 +55,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Entity.CTP, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,6 +89,12 @@
     <Compile Include="Cache\ICachable.cs" />
     <Compile Include="Cache\IPersistentStorage.cs" />
     <Compile Include="DataManagers\CodeGen.cs" />
+    <Compile Include="DataManagers\IPairManager.cs" />
+    <Compile Include="DataManagers\ICandleManager.cs" />
+    <Compile Include="Entities\Candle\CandleTypeSummary.cs" />
+    <Compile Include="Entities\Data\DateTimeRangeSummary.cs" />
+    <Compile Include="IFileDownloader.cs" />
+    <Compile Include="DataManagers\IFileDownloadManager.cs" />
     <Compile Include="DataManagers\ITestManager.cs" />
     <Compile Include="DataManagers\IStrategyManager.cs" />
     <Compile Include="Entities\Data\RawCSVRecord.cs" />
@@ -104,8 +112,8 @@
     <Compile Include="Enums\PriceComparisonTypes.cs" />
     <Compile Include="Enums\NetProfitTypes.cs" />
     <Compile Include="Enums\TradeTypes.cs" />
-    <Compile Include="Enums\BasePairs.cs" />
-    <Compile Include="Enums\TimeIntervalTypes.cs" />
+    <Compile Include="Enums\BasePair.cs" />
+    <Compile Include="Enums\CandleTypes.cs" />
     <Compile Include="Enums\StrategyTypes.cs" />
     <Compile Include="Enums\SystemLogTypes.cs" />
     <Compile Include="Exceptions\EmailFormatException.cs" />

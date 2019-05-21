@@ -1,7 +1,7 @@
 ﻿
 using Contracts.Cache;
 
-namespace Common.Extensions
+namespace Dependency.Extensions
 {
 	public static class ICachableExtensions
 	{

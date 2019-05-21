@@ -27,6 +27,7 @@ namespace Contracts.Entities.Data {
 <#+
     foreach(Table table in base.Tables)
     {
+		if (table.Name == "_Staging") continue;
 #>
 	/// <summary>
 	/// Interface of our generic <#+ Write(table.Name); #> object

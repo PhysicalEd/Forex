@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace Common.Extensions
+namespace Dependency.Extensions
 {
 	public static class HttpRequestExtensions
 	{

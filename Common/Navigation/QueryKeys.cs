@@ -1,4 +1,4 @@
-﻿namespace Common.Navigation
+﻿namespace Dependency.Navigation
 {
 	public class QueryKeys
 	{

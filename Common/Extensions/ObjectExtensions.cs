@@ -1,4 +1,4 @@
-﻿namespace Common.Extensions
+﻿namespace Dependency.Extensions
 {
 	public static class ObjectExtensions
 	{

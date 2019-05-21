@@ -11,8 +11,8 @@
   DTS:LocaleID="5129"
   DTS:ObjectName="InsertRowsFromCSV"
   DTS:PackageType="5"
-  DTS:VersionBuild="153"
-  DTS:VersionGUID="{7110CF44-DEF9-4468-AE48-C92C13A4FFE6}">
+  DTS:VersionBuild="174"
+  DTS:VersionGUID="{C2B59C34-706E-4C87-B2C7-D0B09F82159E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw7nU812ge0mBldWTfEPgCwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABt7Zf3aN8VrS3ZsHUrFwSnmKKRuGsDaVXNkvO64sUKwQAAAAAOgAAAAAIAACAAAAApXmE+S+ZWF1ntV3MVjR3m7Na8gcktG5T+zDncrJKHfiAAAACgubHNT5UhG7WPYygj0wA2dcY9XAOpIeIpvABEGFxYR0AAAACEkORgivfms1XqFvagL0fsRjm0DlamgdwIdIAtH5hSdCRNCRUXgCO+xAo5nVtFZoq/+rGFmhOOY76cW0GBUXN6</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASUFvK70T7UCkYC9IwzwBLQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADPfFwKZFiy/yi/KUdk9Cgc3s6HHyidyJkfVbAGW9iucQAAAAAOgAAAAAIAACAAAAD5fJV/aXMOKDDKKxQonz8W7PCeedNAkxWYTD8XJI/YIiAAAADcgG6ROuXtNj3hxCEDHQBuC4CQ+VUy5b2mJYONVVwF7kAAAACC8p5jxhFJHS78E6ZlAqejGeZczgQ1WliVuAboGqBBBU1RBe9hBvABbGbv8w8WMH1Fg85/KXVXp19Q8ffzWk21</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -36,16 +36,17 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{6CA26F5A-1D37-4161-B075-670E2E7D57EC}"
       DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FileFullPath]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
           DTS:LocaleID="5129"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:HeaderRowDelimiter="_x000A_"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Ed\Desktop\ForexSSIS\DAT_ASCII_GBPUSD_T_201802.csv">
+          DTS:ConnectionString="D:\Projects\Forex\Downloads\">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -54,7 +55,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DateTime"
-              DTS:DTSID="{2C4EAB8C-728F-4ED4-B755-ACF50D894649}"
+              DTS:DTSID="{11BD1552-19BB-4BEA-B440-5CCBB5EEE3FA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -63,7 +64,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Bid"
-              DTS:DTSID="{8270072D-1946-49E4-AB41-C51252644CEB}"
+              DTS:DTSID="{A1EDD967-96A8-48B0-B540-68E8DDBCEE64}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -72,16 +73,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Ask"
-              DTS:DTSID="{9D73DAD1-137C-45C6-967F-0B5A43C0E65A}"
+              DTS:DTSID="{7D44C21C-9A86-4FBB-9996-CC8F29125863}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:ColumnDelimiter="_x000A_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="0"
-              DTS:DTSID="{40443823-57A4-4B24-B78E-FA82E4F4682C}"
+              DTS:DTSID="{9E88B9AE-3A59-433B-A1AF-474343F31007}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -116,7 +117,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FileFullPath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\</DTS:VariableValue>
+        DTS:DataType="8">D:\Projects\Forex\Downloads\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -135,7 +136,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FinishedFolder">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\Finished</DTS:VariableValue>
+        DTS:DataType="8">D:\Projects\Forex\Downloads\Finished</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -144,7 +145,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS</DTS:VariableValue>
+        DTS:DataType="8">D:\Projects\Forex\Downloads</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -201,7 +202,7 @@
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="C:\Users\Ed\Desktop\ForexSSIS" />
+              Folder="D:\Projects\Forex\Downloads" />
             <FEFEProperty
               FileSpec="*.*" />
             <FEFEProperty
@@ -247,7 +248,7 @@
           DTS:Namespace="User"
           DTS:ObjectName="SkippedFolder">
           <DTS:VariableValue
-            DTS:DataType="8">C:\Users\Ed\Desktop\ForexSSIS\Skipped</DTS:VariableValue>
+            DTS:DataType="8">D:\Projects\Forex\Downloads\Skipped</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
           DTS:CreationName=""
@@ -892,32 +893,6 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Foreach Loop Container\ESQL_Insert filename in record"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{F0C261C6-8E86-4D02-83B1-E99EF154A871}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="ESQL_Insert filename in record"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:PropertyExpression
-            DTS:Name="SqlStatementSource">"declare @NumberOfRowsInserted int
-select @NumberOfRowsInserted=count(*)
-from Tick
-where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
-update CSVImport
-set importedrows = @NumberOfRowsInserted
-where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
-"</DTS:PropertyExpression>
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
-              SQLTask:SqlStatementSource="declare @NumberOfRowsInserted int&#xA;select @NumberOfRowsInserted=count(*)&#xA;from Tick&#xA;where CSVImportID = 0&#xA;update CSVImport&#xA;set importedrows = @NumberOfRowsInserted&#xA;where CSVImportID = 0&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package\Foreach Loop Container\ESQL_IsFileLoaded"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -931,8 +906,27 @@ where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
           <DTS:PropertyExpression
             DTS:Name="SqlStatementSource">"DECLARE @FileName VARCHAR(100)
 DECLARE @FileExistsFlg bit
+DECLARE @PairID int
+DECLARE @PairName varchar(6)
+DECLARE @DateDescription varchar(10)
 DECLARE @SQLRowCount int
+
 SET @FileName='"+@[User::FileName] +"'
+SET @PairName = (select substring(@FileName, 11,6))
+SET @DateDescription = (select substring(@FileName, 20,6))
+
+select top 1 @PairID = p.PairID
+	from Pair p
+	where p.PairDescription = @PairName
+
+	IF @PairID is null
+	BEGIN
+		insert into Pair values (@PairName)
+		select top 1 @PairID = p.PairID
+		from Pair p
+		where p.PairDescription = @PairName
+	END
+
 
 IF EXISTS (SELECT 1
            FROM   [dbo].[CSVImport]
@@ -940,16 +934,26 @@ IF EXISTS (SELECT 1
   BEGIN
       SET @FileExistsFlg = 1
 	  SET @SQLRowCount = (Select top 1 ImportedRows from [dbo].[CSVImport] WHERE CSVfilename = @FileName)
+
   END
 ELSE
-BEGIN
-SET @FileExistsFlg = 0 END
+  BEGIN
+	SET @SQLRowCount = 0
 
-Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, (select substring(@FileName, 11,6) as PairName), (select substring(@FileName, 20,6) as DateDescription)"</DTS:PropertyExpression>
+	insert into [CSVImport] values(			
+		@DateDescription, 0, @PairID, @FileName
+	)
+
+	SET @FileExistsFlg = 1	
+
+  END
+
+Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, @PairName as PairName, @DateDescription as DateDescription, @PairID as PairID
+"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
-              SQLTask:SqlStatementSource="DECLARE @FileName VARCHAR(100)&#xA;DECLARE @FileExistsFlg bit&#xA;DECLARE @SQLRowCount int&#xA;SET @FileName=''&#xA;&#xA;IF EXISTS (SELECT 1&#xA;           FROM   [dbo].[CSVImport]&#xA;           WHERE  CSVFileName=@FileName)&#xA;  BEGIN&#xA;      SET @FileExistsFlg = 1&#xA;&#x9;  SET @SQLRowCount = (Select top 1 ImportedRows from [dbo].[CSVImport] WHERE CSVfilename = @FileName)&#xA;  END&#xA;ELSE&#xA;BEGIN&#xA;SET @FileExistsFlg = 0 END&#xA;&#xA;Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, (select substring(@FileName, 11,6) as PairName), (select substring(@FileName, 20,6) as DateDescription)"
+              SQLTask:SqlStatementSource="DECLARE @FileName VARCHAR(100)&#xA;DECLARE @FileExistsFlg bit&#xA;DECLARE @PairID int&#xA;DECLARE @PairName varchar(6)&#xA;DECLARE @DateDescription varchar(10)&#xA;DECLARE @SQLRowCount int&#xA;&#xA;SET @FileName=''&#xA;SET @PairName = (select substring(@FileName, 11,6))&#xA;SET @DateDescription = (select substring(@FileName, 20,6))&#xA;&#xA;select top 1 @PairID = p.PairID&#xA;&#x9;from Pair p&#xA;&#x9;where p.PairDescription = @PairName&#xA;&#xA;&#x9;IF @PairID is null&#xA;&#x9;BEGIN&#xA;&#x9;&#x9;insert into Pair values (@PairName)&#xA;&#x9;&#x9;select top 1 @PairID = p.PairID&#xA;&#x9;&#x9;from Pair p&#xA;&#x9;&#x9;where p.PairDescription = @PairName&#xA;&#x9;END&#xA;&#xA;&#xA;IF EXISTS (SELECT 1&#xA;           FROM   [dbo].[CSVImport]&#xA;           WHERE  CSVFileName=@FileName)&#xA;  BEGIN&#xA;      SET @FileExistsFlg = 1&#xA;&#x9;  SET @SQLRowCount = (Select top 1 ImportedRows from [dbo].[CSVImport] WHERE CSVfilename = @FileName)&#xA;&#xA;  END&#xA;ELSE&#xA;  BEGIN&#xA;&#x9;SET @SQLRowCount = 0&#xA;&#xA;&#x9;insert into [CSVImport] values(&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;@DateDescription, 0, @PairID, @FileName&#xA;&#x9;)&#xA;&#xA;&#x9;SET @FileExistsFlg = 1&#x9;&#xA;&#xA;  END&#xA;&#xA;Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, @PairName as PairName, @DateDescription as DateDescription, @PairID as PairID&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -963,6 +967,9 @@ Select top 1 @FileExistsFlg as FileExistsFlg, @SQLRowCount as SQLRowCount, (sele
               <SQLTask:ResultBinding
                 SQLTask:ResultName="3"
                 SQLTask:DtsVariableName="User::DateDescription" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="4"
+                SQLTask:DtsVariableName="User::PairID" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1005,6 +1012,32 @@ from [_Staging] s"</DTS:PropertyExpression>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ESQL_Update filename in record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F0C261C6-8E86-4D02-83B1-E99EF154A871}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ESQL_Update filename in record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"declare @NumberOfRowsInserted int
+select @NumberOfRowsInserted=count(*)
+from Tick
+where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
+update CSVImport
+set importedrows = @NumberOfRowsInserted
+where CSVImportID = "+ (DT_WSTR, 10)@[User::CSVImportID] +"
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
+              SQLTask:SqlStatementSource="declare @NumberOfRowsInserted int&#xA;select @NumberOfRowsInserted=count(*)&#xA;from Tick&#xA;where CSVImportID = 0&#xA;update CSVImport&#xA;set importedrows = @NumberOfRowsInserted&#xA;where CSVImportID = 0&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Foreach Loop Container\ESQL_UpsertCSVImport"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -1043,48 +1076,6 @@ select top 1 CSVImportID from [CSVImport] where CSVFileName = '" +@[User::FileNa
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Foreach Loop Container\ESQL_UpsertPairName"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{CEBC534F-EDD4-43E4-B5C0-0C0DD81C0335}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="ESQL_UpsertPairName"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:PropertyExpression
-            DTS:Name="SqlStatementSource">"declare @PairDescription varchar(6)
-declare @PairID int
-
-set @PairDescription = '" + @[User::PairName] +"'
-
-select top 1 @PairID = p.PairID
-from Pair p
-where p.PairDescription = @PairDescription
-
-if @PairID is null
-begin
-	insert into Pair values (@PairDescription)
-	select top 1 @PairID = p.PairID
-	from Pair p
-	where p.PairDescription = @PairDescription
-end
-
-select @PairID as PairID
-"</DTS:PropertyExpression>
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{38046E77-128A-4EC4-9AD1-E3A17D5F113D}"
-              SQLTask:SqlStatementSource="declare @PairDescription varchar(6)&#xA;declare @PairID int&#xA;&#xA;set @PairDescription = ''&#xA;&#xA;select top 1 @PairID = p.PairID&#xA;from Pair p&#xA;where p.PairDescription = @PairDescription&#xA;&#xA;if @PairID is null&#xA;begin&#xA;&#x9;insert into Pair values (@PairDescription)&#xA;&#x9;select top 1 @PairID = p.PairID&#xA;&#x9;from Pair p&#xA;&#x9;where p.PairDescription = @PairDescription&#xA;end&#xA;&#xA;select @PairID as PairID&#xA;"
-              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="0"
-                SQLTask:DtsVariableName="User::PairID" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package\Foreach Loop Container\Finished"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
@@ -1114,7 +1105,7 @@ select @PairID as PairID
           DTS:LocaleID="-1"
           DTS:ObjectName="Skipped"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -1131,8 +1122,7 @@ select @PairID as PairID
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{DAAA15DD-5CB5-4289-B1A7-309C80DBC121}"
-          DTS:Expression="@LoadStatusFlg==0"
+          DTS:DTSID="{D5D31A32-A045-405E-A9F2-734995B00C58}"
           DTS:From="Package\Foreach Loop Container\ESQL_IsFileLoaded"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -1162,24 +1152,16 @@ select @PairID as PairID
           DTS:From="Package\Foreach Loop Container\Finished"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
-          DTS:To="Package\Foreach Loop Container\ESQL_Insert filename in record" />
+          DTS:To="Package\Foreach Loop Container\ESQL_Update filename in record" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
-          DTS:DTSID="{62C2F026-6D80-4E04-8A4F-8621279457B3}"
+          DTS:DTSID="{C35A04C7-4215-42F1-A3ED-9766352561BF}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::LoadStatusFlg] == 1 &amp;&amp;  (@[User::SQLRowCount] != @[User::CSVRowCount])"
           DTS:From="Package\Foreach Loop Container\DFT_CSVRowCount"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 4"
-          DTS:To="Package\Foreach Loop Container\ESQL_UpsertPairName" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
-          DTS:CreationName=""
-          DTS:DTSID="{511BF4D2-10A9-4085-BEB3-756CAB9C2A79}"
-          DTS:From="Package\Foreach Loop Container\ESQL_UpsertPairName"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 5"
           DTS:To="Package\Foreach Loop Container\ESQL_UpsertCSVImport" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 6]"
@@ -1205,14 +1187,6 @@ select @PairID as PairID
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\Foreach Loop Container\DFT_LoadToStagingTable" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 9]"
-          DTS:CreationName=""
-          DTS:DTSID="{5E298BC7-EF99-42DD-A4FC-455343784B16}"
-          DTS:From="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 9"
-          DTS:To="Package\Foreach Loop Container\ESQL_Insert filename in record" />
       </DTS:PrecedenceConstraints>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
@@ -1239,19 +1213,15 @@ select @PairID as PairID
         <NodeLayout
           Size="171,42"
           Id="Package\Foreach Loop Container\DFT_CSVRowCount"
-          TopLeft="55,128" />
+          TopLeft="78,175" />
         <NodeLayout
           Size="200,42"
           Id="Package\Foreach Loop Container\DFT_LoadToStagingTable"
           TopLeft="535,214" />
         <NodeLayout
-          Size="226,42"
-          Id="Package\Foreach Loop Container\ESQL_Insert filename in record"
-          TopLeft="75,351" />
-        <NodeLayout
           Size="169,42"
           Id="Package\Foreach Loop Container\ESQL_IsFileLoaded"
-          TopLeft="59,56" />
+          TopLeft="61,82" />
         <NodeLayout
           Size="206,42"
           Id="Package\Foreach Loop Container\ESQL_ProcessStagingTable"
@@ -1261,13 +1231,13 @@ select @PairID as PairID
           Id="Package\Foreach Loop Container\ESQL_ResetTables"
           TopLeft="61,5.5" />
         <NodeLayout
+          Size="226,42"
+          Id="Package\Foreach Loop Container\ESQL_Update filename in record"
+          TopLeft="75,351" />
+        <NodeLayout
           Size="191,42"
           Id="Package\Foreach Loop Container\ESQL_UpsertCSVImport"
-          TopLeft="487,68" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Foreach Loop Container\ESQL_UpsertPairName"
-          TopLeft="210,195" />
+          TopLeft="487,69" />
         <NodeLayout
           Size="118,42"
           Id="Package\Foreach Loop Container\Finished"
@@ -1275,21 +1245,33 @@ select @PairID as PairID
         <NodeLayout
           Size="116,42"
           Id="Package\Foreach Loop Container\Skipped"
-          TopLeft="292,72" />
+          TopLeft="359,50" />
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="142,98">
+          TopLeft="145.5,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30"
+              EndConnector="-9.16666666666669,51"
               Start="0,0"
-              End="0,22.5">
+              End="-9.16666666666669,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.5" />
+                    End="0,26.3163383545771" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3163383545771"
+                    Point2="0,30.3163383545771"
+                    Point3="-4,30.3163383545771" />
+                  <mssgle:LineSegment
+                    End="-5.16666666666669,30.3163383545771" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.16666666666669,30.3163383545771"
+                    Point2="-9.16666666666669,30.3163383545771"
+                    Point3="-9.16666666666669,34.3163383545771" />
+                  <mssgle:LineSegment
+                    End="-9.16666666666669,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1300,37 +1282,37 @@ select @PairID as PairID
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="226,149">
+          TopLeft="190.666666666667,175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66,-56"
+              EndConnector="226.333333333333,-83"
               Start="0,0"
-              End="58.5,-56">
+              End="226.333333333333,-75.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="29,0" />
+                    End="0,-29.6616454229432" />
                   <mssgle:CubicBezierSegment
-                    Point1="29,0"
-                    Point2="33,0"
-                    Point3="33,-4" />
+                    Point1="0,-29.6616454229432"
+                    Point2="0,-33.6616454229432"
+                    Point3="4,-33.6616454229432" />
                   <mssgle:LineSegment
-                    End="33,-52" />
+                    End="222.333333333333,-33.6616454229432" />
                   <mssgle:CubicBezierSegment
-                    Point1="33,-52"
-                    Point2="33,-56"
-                    Point3="37,-56" />
+                    Point1="222.333333333333,-33.6616454229432"
+                    Point2="226.333333333333,-33.6616454229432"
+                    Point3="226.333333333333,-37.6616454229432" />
                   <mssgle:LineSegment
-                    End="58.5,-56" />
+                    End="226.333333333333,-75.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="25,1,16,16"
+              BoundingBox="105.166666666667,-28.6616454229432,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1404,100 +1386,54 @@ select @PairID as PairID
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
-          TopLeft="167.666666666667,170">
+          TopLeft="204.25,175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105.333333333333,25"
+              EndConnector="347.75,-64"
               Start="0,0"
-              End="105.333333333333,17.5">
+              End="347.75,-56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.51082016879463" />
+                    End="0,-23.8210276036568" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.51082016879463"
-                    Point2="0,12.5108201687946"
-                    Point3="4,12.5108201687946" />
+                    Point1="0,-23.8210276036568"
+                    Point2="0,-27.8210276036568"
+                    Point3="4,-27.8210276036568" />
                   <mssgle:LineSegment
-                    End="101.333333333333,12.5108201687946" />
+                    End="343.75,-27.8210276036568" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.333333333333,12.5108201687946"
-                    Point2="105.333333333333,12.5108201687946"
-                    Point3="105.333333333333,16.5108201687946" />
+                    Point1="343.75,-27.8210276036568"
+                    Point2="347.75,-27.8210276036568"
+                    Point3="347.75,-31.8210276036568" />
                   <mssgle:LineSegment
-                    End="105.333333333333,17.5" />
+                    End="347.75,-56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="44.6666666666665,17.5108201687946,16,16"
+              BoundingBox="165.875,-22.8210276036568,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="332,195">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="220,-85"
-              Start="0,0"
-              End="220,-77.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-38.5141325130934" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-38.5141325130934"
-                    Point2="0,-42.5141325130934"
-                    Point3="4,-42.5141325130934" />
-                  <mssgle:LineSegment
-                    End="216,-42.5141325130934" />
-                  <mssgle:CubicBezierSegment
-                    Point1="216,-42.5141325130934"
-                    Point2="220,-42.5141325130934"
-                    Point3="220,-46.5141325130934" />
-                  <mssgle:LineSegment
-                    End="220,-77.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="227,26.5">
+          TopLeft="144.75,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="1,50.5"
+              EndConnector="0,34.5"
               Start="0,0"
-              End="8.5,50.5">
+              End="0,27">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="19.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.5,0"
-                    Point2="23.5,0"
-                    Point3="23.5,4" />
-                  <mssgle:LineSegment
-                    End="23.5,46.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.5,46.5"
-                    Point2="23.5,50.5"
-                    Point3="19.5,50.5" />
-                  <mssgle:LineSegment
-                    End="8.5,50.5" />
+                    End="0,27" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1530,64 +1466,30 @@ select @PairID as PairID
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 8]"
-          TopLeft="613,110">
+          TopLeft="613,111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="22,104"
+              EndConnector="22,103"
               Start="0,0"
-              End="22,96.5">
+              End="22,95.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.1183800623053" />
+                    End="0,37.7133956386293" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.1183800623053"
-                    Point2="0,42.1183800623053"
-                    Point3="4,42.1183800623053" />
+                    Point1="0,37.7133956386293"
+                    Point2="0,41.7133956386293"
+                    Point3="4,41.7133956386293" />
                   <mssgle:LineSegment
-                    End="18,42.1183800623053" />
+                    End="18,41.7133956386293" />
                   <mssgle:CubicBezierSegment
-                    Point1="18,42.1183800623053"
-                    Point2="22,42.1183800623053"
-                    Point3="22,46.1183800623053" />
+                    Point1="18,41.7133956386293"
+                    Point2="22,41.7133956386293"
+                    Point3="22,45.7133956386293" />
                   <mssgle:LineSegment
-                    End="22,96.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 9]"
-          TopLeft="599,324">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-411,27"
-              Start="0,0"
-              End="-411,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,6.92485549132948" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,6.92485549132948"
-                    Point2="0,10.9248554913295"
-                    Point3="-4,10.9248554913295" />
-                  <mssgle:LineSegment
-                    End="-407,10.9248554913295" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-407,10.9248554913295"
-                    Point2="-411,10.9248554913295"
-                    Point3="-411,14.9248554913295" />
-                  <mssgle:LineSegment
-                    End="-411,19.5" />
+                    End="22,95.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1599,8 +1501,8 @@ select @PairID as PairID
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="783,475"
-          Size="783,518"
+          PanelSize="783,568"
+          Size="783,611"
           Id="Package\Foreach Loop Container"
           TopLeft="164,76" />
       </GraphLayout>
@@ -1610,7 +1512,7 @@ select @PairID as PairID
     design-time-name="Package\Foreach Loop Container\DFT_CSVRowCount">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="130,42"
           Id="Package\Foreach Loop Container\DFT_CSVRowCount\Row Count"
@@ -1638,9 +1540,7 @@ select @PairID as PairID
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

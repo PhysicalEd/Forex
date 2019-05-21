@@ -24,7 +24,7 @@ namespace Logic.DataManagers
             var startTestTime = new DateTime();
             var endTestTime = new DateTime();
             var pairID = 1;
-            var period = TimeIntervalTypes.Weeks;
+            var period = CandleTypes.Weeks;
 
             // Process it using CandleManager
             var candleMgr = new CandleManager(startTestTime, endTestTime, period);
