@@ -15,21 +15,16 @@ namespace Logic.Candle
         public CandleTypes CandleType { get; set; }
         
 
-        public CandleGenerator(DateTime dateStart, DateTime dateEnd, CandleTypes candleType)
+        public CandleGenerator(DateTime dateStart, DateTime dateEnd, CandleTypes candleType, BasePair pair)
         {
             this.DateStart = dateStart;
             this.DateEnd = dateEnd;
             this.CandleType = candleType;
+            this.Pair = pair;
         }
         public void GenerateCandles()
         {
-            // Iterate through with the first possible hour to start with
-            // Split the date range into iterations of the candle type
-            var tickRange = 
-
-            Dependency.Dependency.Resolve<ICandleManager>().GetCandleOfTimeRange()
-
-
+            Dependency.Dependency.Resolve<ICandleManager>().CreateCandles(this.DateStart, this.DateEnd, this.CandleType, this.Pair);
         }
 
 

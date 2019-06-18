@@ -6,7 +6,7 @@ using Contracts.Entities.Data;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 21 May 2019 
+// Code Generation Template developed by Ben Liebert, 12 Jun 2019 
 namespace Data.EF.Database {
 
 	/// <summary>
@@ -24,11 +24,11 @@ namespace Data.EF.Database {
 			modelBuilder.Entity<Candle>().Property(x => x.CandleID);
 			modelBuilder.Entity<Candle>().Property(x => x.CandleTypeID);
 			modelBuilder.Entity<Candle>().Property(x => x.FromTime);
-			modelBuilder.Entity<Candle>().Property(x => x.ToTime);
 			modelBuilder.Entity<Candle>().Property(x => x.HighTickID);
 			modelBuilder.Entity<Candle>().Property(x => x.LowTickID);
 			modelBuilder.Entity<Candle>().Property(x => x.OpenTickID);
 			modelBuilder.Entity<Candle>().Property(x => x.CloseTickID);
+			modelBuilder.Entity<Candle>().Property(x => x.PairID);
 		
 			// CandleType
 			modelBuilder.Entity<CandleType>().HasKey(x => x.CandleTypeID);
@@ -46,6 +46,8 @@ namespace Data.EF.Database {
 			modelBuilder.Entity<CSVImport>().Property(x => x.ImportedRows);
 			modelBuilder.Entity<CSVImport>().Property(x => x.PairID);
 			modelBuilder.Entity<CSVImport>().Property(x => x.CSVFileName);
+			modelBuilder.Entity<CSVImport>().Property(x => x.FromDate);
+			modelBuilder.Entity<CSVImport>().Property(x => x.ToDate);
 		
 			// FileDownloadStatus
 			modelBuilder.Entity<FileDownloadStatus>().HasKey(x => x.FileDownloadStatusID);

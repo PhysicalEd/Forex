@@ -8,7 +8,7 @@ using System.Text;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 21 May 2019 
+// Code Generation Template developed by Ben Liebert, 12 Jun 2019 
 namespace Contracts.Entities.Data {
 
 	/// <summary>
@@ -19,11 +19,11 @@ namespace Contracts.Entities.Data {
 		public int CandleID { get; set; }
 		public int CandleTypeID { get; set; }
 		public DateTime FromTime { get; set; }
-		public DateTime ToTime { get; set; }
 		public int HighTickID { get; set; }
 		public int LowTickID { get; set; }
 		public int OpenTickID { get; set; }
 		public int CloseTickID { get; set; }
+		public int PairID { get; set; }
 		public bool IsNew { get { return (this.CandleID == 0); } }
 	}
 		
@@ -49,6 +49,8 @@ namespace Contracts.Entities.Data {
 		public int ImportedRows { get; set; }
 		public int PairID { get; set; }
 		public string CSVFileName { get; set; }
+		public DateTime? FromDate { get; set; }
+		public DateTime? ToDate { get; set; }
 		public bool IsNew { get { return (this.CSVImportID == 0); } }
 	}
 		

@@ -9,9 +9,12 @@ namespace Contracts.DataManagers
 {
     public interface ICandleManager
     {
-        CandleSummary GetCandleOfTimeRange(DateTime tickStart, DateTime tickEnd, BasePair pair);
+        CandleSummary GenerateSingleCandle(CandleTypes candleType, DateTime tickStart, DateTime tickEnd, BasePair pair);
 
-        List<DateTimeRangeSummary> GetDateRangesForCandleType(DateTime startDate, DateTime endDate, CandleTypeSummary candleType);
+        void CreateCandles(DateTime startDate, DateTime endDate, CandleTypes candleType, BasePair pair);
+
+        void CheckImportedCSVs(DateTime fromDate, DateTime toDate);
+
 
     }
 }

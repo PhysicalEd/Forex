@@ -64,7 +64,7 @@ namespace HistDataDownloader
                 {
                     var dateDescription = "";
                     // Attempt to get the file record
-                    var fileDownloadStatus = Dependency.Dependency.Resolve<IFileDownloadManager>().GetFileDownloadStatusUsingDateDescriptionAndBasePair(dateDescription);
+                    var fileDownloadStatus = Dependency.Dependency.Resolve<IFileDownloadManager>().GetFileDownloadStatusUsingDateDescriptionAndBasePair(dateDescription, this.Pair);
 
                     //if (fileDownloadStatus == null) Dependency.Dependency.Resolve<IFileDownloadManager>().
 

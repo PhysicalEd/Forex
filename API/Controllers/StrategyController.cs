@@ -60,7 +60,7 @@ namespace API.Controllers
             model.Filters.StartTime = new DateTime(2018,2,1).ToUniversalTime();
             model.Filters.EndTime = new DateTime(2018, 2,20).ToUniversalTime();
             model.Filters.TradeTime = new DateTime(2018, 2,1,8,0,0);
-            model.Filters.CandleType = CandleTypes.Hours;
+            //model.Filters.CandleType = CandleTypes.Hours;
 
             var mgr = Dependency.Dependency.Resolve<IStrategyManager>();
 

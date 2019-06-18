@@ -5,7 +5,7 @@ using Contracts.Entities.Data;
 
 // CAUTION - AUTOMATICALLY GENERATED
 // These classes have been automatically generated from the core database. Use partial classes to create custom properties
-// Code Generation Template developed by Ben Liebert, 21 May 2019 
+// Code Generation Template developed by Ben Liebert, 12 Jun 2019 
 namespace Data.EF.Fake {
 
 	/// <summary>
